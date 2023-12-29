@@ -1,0 +1,39 @@
+<!-- src/app/login/login.page.html -->
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Iniciar Sesión
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card class="ion-card-centered">
+    <ion-card-header>
+      <ion-title class="ion-text-center">Ingresa tus credenciales</ion-title>
+    </ion-card-header>
+    <form [formGroup]="loginForm">
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Correo Electrónico</ion-label>
+            <ion-icon name="person" slot="start"></ion-icon>
+            <ion-input type="text" formControlName="email" required></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-icon name="lock-closed" slot="start"></ion-icon>
+            <ion-input type="password" formControlName="password" required></ion-input>
+          </ion-item>
+        </ion-list>
+  
+        <ion-button expand="full" color="tertiary" shape="round"(click)="login()">Iniciar Sesión</ion-button>
+      </ion-card-content>
+    </form>
+
+
+  </ion-card>
+</ion-content>
+
+

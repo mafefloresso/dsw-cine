@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Cine    
+    </ion-title>
+    <ion-segment value="all">
+      <ion-segment-button value="peliculas" (click)="gotomovies()" >
+        <ion-label>Peliculas</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="funciones" (click)="gotofunciones()">
+        <ion-label> Funciones</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="openRegisterUserPage()">
+        <ion-icon name="person-add"> </ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-content color="primary" class="ion-padding">
+    <h1>Primary content</h1>
+    <p>Here's a small text description for the content. Nothing more, nothing less.</p>
+  </ion-content>
+  <ion-content color="secondary" class="ion-padding">
+    <h1>Secondary content</h1>
+    <p>Here's a small text description for the content. Nothing more, nothing less.</p>
+  </ion-content>
+</ion-content>
