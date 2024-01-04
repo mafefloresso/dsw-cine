@@ -18,7 +18,6 @@ export class MoviesPage implements OnInit {
    }
 
   ngOnInit() {
-    console.log("hola")
   }
 
 
@@ -73,7 +72,6 @@ export class MoviesPage implements OnInit {
     // Llama la pantalla de registro
     this.router.navigate(['/register']);
   }
-
 
 
 
