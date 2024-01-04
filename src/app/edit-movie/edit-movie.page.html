@@ -1,0 +1,72 @@
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Actualizar Pelicula
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  [fullscreen]="true">
+  <ion-card >
+    <ion-card-header>
+      <ion-title class="ion-text-center">Ingresa los datos</ion-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="editmovieForm" >
+      <ion-list>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input formControlName="nombre" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Director</ion-label>
+              <ion-input formControlName="director" required></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Año</ion-label>
+              <ion-input formControlName="año" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Duracion</ion-label>
+              <ion-input formControlName="duracion" required></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Genero</ion-label>
+              <ion-input formControlName="genero" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+          </ion-col>
+        </ion-row>
+        <ion-item>
+          <ion-label position="floating">Imagen</ion-label>
+          <ion-textarea formControlName="img" required></ion-textarea>
+        </ion-item>
+        
+      </ion-list>
+    
+      <ion-button expand="full" color="tertiary" shape="round" (click)="editMovie()" >Actualizar</ion-button>
+      <ion-button color="tertiary" shape="round" (click)="gotomovies()">Volver</ion-button>
+    </form>
+    </ion-card-content>
+    
+  </ion-card>
+</ion-content>
+
+

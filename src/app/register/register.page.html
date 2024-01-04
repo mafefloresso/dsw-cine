@@ -1,0 +1,46 @@
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-title class="ion-text-center">
+      Registrar
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card class="ion-card-centered">
+    <ion-card-header>
+      <ion-title class="ion-text-center">Ingresa los datos</ion-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="registerForm" >
+      <ion-list>
+
+        <ion-item>
+          <ion-label position="floating">userName</ion-label>
+          <ion-input formControlName="userName" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Correo Electrónico</ion-label>
+          <ion-input formControlName="email" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password"  formControlName="password" required></ion-input>
+        </ion-item>
+      </ion-list>
+    
+      <ion-button expand="full" color="tertiary" shape="round" (click)="register()">Registrar</ion-button>
+      
+      <ion-button expand="full" color="tertiary" shape="round" (click)="gotomovies()">Volver</ion-button>
+    </form>
+    </ion-card-content>
+    
+  </ion-card>
+</ion-content>
+
+

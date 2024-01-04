@@ -1,0 +1,7 @@
+{
+  "name": "cine-dsw",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
