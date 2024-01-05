@@ -9,68 +9,76 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './edit-movie.page.html',
   styleUrls: ['./edit-movie.page.scss'],
 })
-export class EditMoviePage implements OnInit{
+export class EditMoviePage implements OnInit {
   movieId: string | null = '';
   editmovieForm: FormGroup;
-  
+
   constructor(
     private formBuilder: FormBuilder,
     private apiProv: ApiProvider,
     private toastController: ToastController,
     private router: Router,
     private route: ActivatedRoute
-    
   ) {
-
     this.editmovieForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       director: ['', Validators.required],
-      año: ['', Validators.required],    
-      duracion: ['', Validators.required], 
+      año: ['', [Validators.required, Validators.pattern(/^(19|20)\d{2}$/)]],
+      duracion: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
       genero: ['', Validators.required],
-      img: ['', Validators.required],   
+      img: ['', [Validators.required, Validators.pattern(/^(http|https):\/\/\S+$/)]],
     });
     this.movieId = this.route.snapshot.queryParamMap.get('movieId');
-    
+
     this.apiProv.getMoviesOne(this.movieId ?? "").then((res) => {
-      //this.editmovieForm.patchValue({nombre:res.nombre })
-      this.editmovieForm.patchValue(res.data) 
-      console.log("edit",res)
-    })
-    
-  }
-  
-  ngOnInit() {
-    console.log(this.route)
+      this.editmovieForm.patchValue(res.data);
+      console.log("edit", res);
+    });
   }
 
-  public editMovie() {
-    
-    console.log("id"+this.movieId)
+  ngOnInit() {
+    console.log(this.route);
+  }
+
+  public async editMovie() {
+    console.log("id" + this.movieId);
 
     if (this.editmovieForm.valid && this.movieId) {
       const data = this.editmovieForm.value;
-      
-      this.apiProv.editMovie(this.movieId, data)
+
+      this.apiProv
+        .editMovie(this.movieId, data)
         .then(async (response) => {
           if (response) {
             const toast = await this.toastController.create({
               message: 'Película actualizada con éxito',
               duration: 2000,
-              position: 'bottom'
+              position: 'bottom',
             });
             toast.present();
-            this.router.navigate(["/movies"],{skipLocationChange: false})
+            this.router.navigate(['/movies'], { skipLocationChange: false });
           }
         })
-        .catch((error) => {
+        .catch(async (error) => {
           console.error(error);
+          const toast = await this.toastController.create({
+            message: 'Error al actualizar la película',
+            duration: 2000,
+            position: 'bottom',
+            color: 'danger', // Opcional: Puedes ajustar el color según tus necesidades
+          });
+          toast.present();
         });
 
       this.editmovieForm.reset();
-      
     } else {
-      console.log('Los datos no son válidos o falta el ID de la película');
+      const toast = await this.toastController.create({
+        message: 'Los datos no son válidos o falta el ID de la película',
+        duration: 2000,
+        position: 'bottom',
+        color: 'danger', 
+      });
+      toast.present();
     }
   }
 
