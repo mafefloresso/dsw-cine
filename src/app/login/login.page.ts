@@ -19,41 +19,52 @@ export class LoginPage implements OnInit {
     private router: Router 
   ) {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-    })
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
   }
 
-  login() {
-    if(this.loginForm.valid){
-       const data = this.loginForm.value;
-       this.apiProv.login(data)
-       .then(async (response)=>{
-         if(response){
-           //console.log(response);
-           if(response.token){
-            localStorage.setItem("token", response.token); //Add token to local storage
-          }
-           const toast = await this.toastController.create({
-            message: 'Login exitoso',
-            duration: 2000, // Duración de 2 segundos
-            position: 'bottom'  // Posición inferior
+  async login() {
+    if (this.loginForm.valid) {
+      const data = this.loginForm.value;
+      
+      try {
+        const response = await this.apiProv.login(data);
+        
+        if (response && response.token) {
+          localStorage.setItem('token', response.token);
+          const toast = await this.toastController.create({
+            message: 'Inicio de sesión exitoso',
+            duration: 2000,
+            position: 'bottom'
           });
           toast.present();
           this.gotomovies();
-         }
-       })      
-
-     }else{
-       console.log('Los datos no son validos');
-     }	
+        } else {
+          this.showErrorMessage('Credenciales inválidas. Por favor, verifique su email y contraseña.');
+        }
+      } catch (error) {
+        console.error('Error en la solicitud de inicio de sesión:', error);
+        this.showErrorMessage('Ocurrió un error durante el inicio de sesión. Por favor, inténtelo de nuevo más tarde.');
+      }
+    } else {
+      this.showErrorMessage('Por favor, complete correctamente todos los campos.');
+    }
   }
 
-  public gotomovies(){
-    // Llama la pantalla peliculas
+  async showErrorMessage(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast.present();
+  }
+
+  public gotomovies() {
     this.router.navigate(['/movies']);
   }
+
   ngOnInit() {
   }
-
 }
