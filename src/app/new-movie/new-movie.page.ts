@@ -51,7 +51,7 @@ export class NewMoviePage {
 
   private showFormErrorMessage() {
     if (!this.isErrorToastDisplayed) {
-      const errorMessage = 'Por favor, complete correctamente todos los campos.';
+      const errorMessage = 'Por favor, complete correctamente todos los campos. Ingrese un año entre 19/2000 y un enlace http para la imagen';
       this.isErrorToastDisplayed = true; // Establecer la bandera de estado
       this.showToastMessage(errorMessage);
     }
