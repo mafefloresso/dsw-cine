@@ -1,5 +1,5 @@
 export const environment = {
-  apiURL: 'http://localhost:3003/'
+  apiURL: 'https://cine-api.vercel.app/'
 };
 
 /*

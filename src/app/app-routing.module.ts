@@ -30,11 +30,19 @@ const routes: Routes = [
     path: 'edit-movie', // Agrega un parámetro llamado movieId
     loadChildren: () => import('./edit-movie/edit-movie.module').then( m => m.EditMoviePageModule)
   },
-
+  {
+    path: 'new-funcion',
+    loadChildren: () => import('./new-funcion/new-funcion.module').then( m => m.NewFuncionPageModule)
+  },
+  {
+    path: 'edit-funcion',
+    loadChildren: () => import('./edit-funcion/edit-funcion.module').then( m => m.EditFuncionPageModule)
+  },
   {
     path: '**', 
     redirectTo: 'login' 
   },
+
 
 
 ];

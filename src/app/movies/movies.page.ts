@@ -85,4 +85,10 @@ export class MoviesPage implements OnInit {
     this.router.navigate(['/funciones']);
   }
 
+  //logout
+  public logout(){
+    this.apiProv.logout();
+    this.router.navigate(['/login']);
+  }
+
 }

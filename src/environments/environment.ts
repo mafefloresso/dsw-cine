@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  apiURL: 'http://localhost:3003/'
+  apiURL: 'https://cine-api.vercel.app/'
 };
 
 /*

@@ -39,6 +39,7 @@ export class LoginPage implements OnInit {
             position: 'bottom'
           });
           toast.present();
+          this.loginForm.reset();
           this.gotomovies();
         } else {
           this.showErrorMessage('Credenciales inválidas. Por favor, verifique su email y contraseña.');

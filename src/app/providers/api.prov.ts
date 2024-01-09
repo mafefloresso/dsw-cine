@@ -7,6 +7,7 @@ import { environment } from "../../environments/environment";
 })
 
 export class ApiProvider {
+
     url = environment.apiURL;
 
     login(data:any): Promise<any>{
@@ -44,6 +45,8 @@ export class ApiProvider {
         });
     }
 
+    // ------------------- MOVIES -------------------
+
     getMovies(): Promise<any> {
         return new Promise ((resolve, reject)=>{
             axios
@@ -56,9 +59,6 @@ export class ApiProvider {
                 });
         });
     }
-
-
-
 
     createMovie(data: any):Promise<any>{
         const token = localStorage.getItem("token");
@@ -124,5 +124,88 @@ export class ApiProvider {
                 });
         });
     }
+
+    // ------------------- FUNCIONES -------------------
+    getFunciones(): Promise<any> {
+        return new Promise ((resolve, reject)=>{
+            axios
+                .get(this.url + "funciones")
+                .then((response) => {
+                    resolve(response.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        });
+    }
+
+    createFuncion(data: any): Promise<any> {
+        const token = localStorage.getItem("token");
+        return new Promise((resolve, reject) => {
+            axios
+                .post(this.url + "funciones", data, {
+                    headers: {
+                        Authorization: token
+                    }
+                })
+                .then((response) => {
+                    resolve(response.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        });
+    }
+    
+    getFuncionOne(funcionId: string): Promise<any> {
+        return new Promise((resolve, reject) => {
+            axios
+                .get(this.url + "funciones/" + funcionId) 
+                .then((response) => {
+                    resolve(response.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        });
+    }
+    
+    deleteFuncion(funcionId: string): Promise<any> {
+        const token = localStorage.getItem("token");
+        return new Promise((resolve, reject) => {
+            axios
+                .delete(`${this.url}funciones/${funcionId}`, { 
+                    headers: {
+                        Authorization: token,
+                    },
+                })
+                .then((response) => {
+                    resolve(response.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        });
+    }
+    
+    editFuncion(funcionId: string, data: any): Promise<any> {
+        const token = localStorage.getItem("token");
+        return new Promise((resolve, reject) => {
+            axios
+                .put(`${this.url}funciones/${funcionId}`, data, { 
+                    headers: {
+                        Authorization: token,
+                    },
+                })
+                .then((response) => {
+                    resolve(response.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                    reject(err);
+                });
+        });
+    }
+    
 }
 
