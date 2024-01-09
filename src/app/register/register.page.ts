@@ -56,7 +56,7 @@ export class RegisterPage implements OnInit {
       this.registerForm.reset();
     } else {
       // Acciones adicionales para manejar datos no válidos
-      const errorMessage = 'Por favor, complete correctamente todos los campos.';
+      const errorMessage = 'Por favor, complete correctamente todos los campos. Verifica que la contraseña contenga al menos un número y una mayúscula y el email tenga formato de correo';
       const toast = await this.toastController.create({
         message: errorMessage,
         duration: 3000,
