@@ -56,7 +56,7 @@ export class NewFuncionPage implements OnInit {
 
       this.newfuncionForm.reset();
     } else {
-      console.log('Los datos no son válidos');
+      console.log('Los datos no son válidos, fecha en formato DD/MM/AAAA y hora en formato de 24 horas');
     }
   }
 
