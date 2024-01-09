@@ -62,7 +62,7 @@ export class EditMoviePage implements OnInit {
         .catch(async (error) => {
           console.error(error);
           const toast = await this.toastController.create({
-            message: 'Error al actualizar la película',
+            message: 'Error al actualizar la película, ingrese un año entre 19/2000 y un enlace http para la imagen',
             duration: 2000,
             position: 'bottom',
             color: 'danger', // Opcional: Puedes ajustar el color según tus necesidades
