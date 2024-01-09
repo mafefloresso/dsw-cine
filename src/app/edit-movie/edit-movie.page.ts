@@ -73,7 +73,7 @@ export class EditMoviePage implements OnInit {
       this.editmovieForm.reset();
     } else {
       const toast = await this.toastController.create({
-        message: 'Los datos no son válidos o falta el ID de la película',
+        message: 'Los datos no son válidos o falta el ID de la película,  ingrese un año entre 19/2000 y un enlace http para la imagen',
         duration: 2000,
         position: 'bottom',
         color: 'danger', 
