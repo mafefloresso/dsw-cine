@@ -49,7 +49,7 @@ export class LoginPage implements OnInit {
         this.showErrorMessage('Ocurrió un error durante el inicio de sesión. Por favor, inténtelo de nuevo más tarde.');
       }
     } else {
-      this.showErrorMessage('Por favor, complete correctamente todos los campos.');
+      this.showErrorMessage('Por favor, complete correctamente todos los campos.  Verifica que la contraseña contenga al menos un número y una mayúscula y el email tenga formato de correo');
     }
   }
 
