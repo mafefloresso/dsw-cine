@@ -79,7 +79,7 @@ time24Validator(control: FormControl) {
       this.editfuncionForm.reset();
     } else {
       const toast = await this.toastController.create({
-        message: 'Los datos no son válidos o falta el ID de la función',
+        message: 'Los datos no son válidos o falta el ID de la función, fecha en formato DD/MM/AAAA y hora en formato de 24 horas',
         duration: 2000,
         position: 'bottom',
         color: 'danger',
